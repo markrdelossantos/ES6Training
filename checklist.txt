@@ -1,5 +1,10 @@
 //let, cost
 // import exports
 //arrow functions, lexical this
+// string literals, default variable values
 // classes
 promises
+
+https://i.imgur.com/ZDAqKP2.gifv 1
+http://i.imgur.com/j118EGV.gif 2
+https://thumbs.gfycat.com/LikableIllfatedKittiwake-size_restricted.gif 3

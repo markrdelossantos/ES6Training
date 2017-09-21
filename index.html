@@ -4,7 +4,7 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<title>Docker CrashCourse</title>
+		<title>ES6 FTW</title>
 
 		<link rel="stylesheet" href="css/reveal.css">
 		<link rel="stylesheet" href="css/theme/blood.css">
@@ -25,7 +25,7 @@
 		<div class="reveal">
 			<div class="slides">
 				<section>
-					<h2>ES6 Review</h2>
+					<h2>ES6</h2>
 					<h3>Mark Delos Santos</h3>
 				</section>
 				<section>
@@ -103,11 +103,11 @@ foo.amfufu(); // RUNTIME ERROR!
 var s1 = 'jav';
 var s2 = "asc";
 var obj = { s3: 'ri', s4: "pt"};
-console.log(s1 + s2 + obj.s3 + obj.s4);
+console.log(s1 + s2 + obj.s3 + obj.s4); // Javascript
 					</code></pre>
 				</section>
 				<section>
-					<h2>Nulls, undefined and truthfullness</h2>
+					<h4>Nulls, undefined and truthfullness</h4>
 					<p class="fragment">Undefined is a <span class="fragment highlight-red">primitive</span> that means empty, nil or nothing...</p>
 					<p class="fragment">Null is a <span class="fragment highlight-red">primitive</span> that means empty, null or nothing...</p>
 					<pre class="fragment"><code class="hljs" data-trim contenteditable>
@@ -158,21 +158,296 @@ console.log(runCallBackAndSquareX_2(cb, 6)); // Square result is 36
 				</section>
 				<section>
 					<h2>Machine problem 1</h2>
-					<h3>Pre-ES5 knowledge</h3>
-					<p></p>
+					<h3>Pre-ES6 knowledge</h3>
+					<p class="fragment">Start opening the workfile :)</p>
+				</section>
+				<section>
+					<h2>Machine problem 1</h2>
+					<p class="fragment">Import my test library via my CDN: http://mnling55.apac.nsn-net.net/lib.js</p>
+					<p class="fragment">Create a variable called "reverse" that returns a function that:</p>
+					<p class="fragment">Accepts 3 string arguments</p>
+					<p class="fragment">and returns the concatenation (string separated by spaces) of all the arguments passed in REVERSE order</p>
+					<p class="fragment">Test your code by passing reverse to test.demo1()</p>
+					<p class="fragment">You'll know when you passed :)</p>
 				</section>
 			</section>
 			<section>
 				<section data-background="https://thumbs.gfycat.com/FrightenedNaiveAdeliepenguin-size_restricted.gif">
 					<h1>ES6 Features</h1>
-					<p class="fragment">Start opening the workfile :)</p>
 				</section>
 				<section>
-					<h2>Scoping</h2>
+					<h3>Scoping</h3>
+					<p class="fragment">Pre-ES6</p>
+					<p class="fragment">var is scoped in function block</p>
+					<pre class="fragment"><code class="hljs" data-trim contenteditable>
+var outer_variable = 1;
+
+if(true) {
+	var if_variable = 2;
+}
+
+(function add_one() {
+	var sum_variable = 3;
+	outer_variable++;
+	if_variable++;
+	sum_variable++;
+})(); // IIFE
+
+console.log(outer_variable); // 2
+console.log(if_variable); // 3
+console.log(sum_variable); // Reference error
+						</script>
+					</code></pre>
+				</section>
+				<section>
+					<h3>Scoping</h3>
+					<p class="fragment">ES6</p>
+					<p class="fragment">let is scoped in ANY block</p>
+					<pre class="fragment"><code class="hljs" data-trim contenteditable>
+var outer_variable = 1;
+
+if(true) {
+	let if_variable = 2;
+}
+
+(function add_one() {
+	var sum_variable = 3;
+	outer_variable++;
+	if_variable++; // Reference error
+	sum_variable++;
+})(); // IIFE
+
+console.log(outer_variable); // 2
+console.log(if_variable); // Reference error
+console.log(sum_variable); // Reference error
+					</code></pre>
+				</section>
+				<section>
+					<h2>Constants</h2>
+					<p class="fragment">Immutable variables</p>
+					<pre class="fragment"><code class="hljs" data-trim contenteditable>
+var mutable = 0;
+const immutable = 1;
+
+mutable = 2;
+immutable = 3; // TypeError: Assignment to constant variable.
+					</code></pre>
+				</section>
+				<section>
+					<h2>Import and export</h2>
+					<p class="fragment">PRE-ES6</p>
+					<pre class="fragment"><code class="hljs" data-trim contenteditable>
+const externalLibrary = require("externalLibrary");
+externalLibrary.doSomething();
+
+const internalLibraryCode = function() {
+	// important stuff
+}
+
+var exports = module.exports;
+exports.internalLibrary = internalLibraryCode;
+					</code></pre>
+				</section>
+				<section>
+					<h2>Import and export</h2>
+					<p class="fragment">ES6</p>
+					<pre class="fragment"><code class="hljs" data-trim contenteditable>
+import externalLibrary from "externalLibrary";
+
+externalLibrary.doSomething();
+
+const internalLibraryCode = function() {
+	// important stuff
+}
+
+export internalLibraryCode;
+					</code></pre>
+				</section>
+				<section>
+					<h2>Arrow functions</h2>
 					<p class="fragment">Pre-ES6</p>
 					<pre class="fragment"><code class="hljs" data-trim contenteditable>
-					
+var function_exp = function(arg1) {
+	console.log(arg1);
+}
+
+function_exp("old"); // old
 					</code></pre>
+				</section>
+				<section>
+					<h2>Arrow functions</h2>
+					<p class="fragment">ES6</p>
+					<pre class="fragment"><code class="hljs" data-trim contenteditable>
+var function_exp = (arg1) => {
+	console.log(arg1);
+}
+
+function_exp("new"); // new
+					</code></pre>
+				</section>
+				<section>
+					<h2>Template strings</h2>
+					<p class="fragment">Pre-ES6</p>
+					<pre class="fragment"><code class="hljs" data-trim contenteditable>
+( ( somethingLong ) => {
+	var log = "Ang haba ng " + somethingLong + " ko!!!";
+})("pasensya");
+					</code></pre>
+				</section>
+				<section>
+					<h2>Template strings</h2>
+					<p class="fragment">ES6</p>
+					<pre class="fragment"><code class="hljs" data-trim contenteditable>
+( ( somethingLong ) => {
+	const log = `Ang haba ng ${somethingLong} ko!!!!`;
+})("pasensya");
+					</code></pre>
+				</section>
+				<section>
+					<h2>Function arg default values</h2>
+					<p class="fragment">Pre-ES6</p>
+					<pre class="fragment"><code class="hljs" data-trim contenteditable>
+function logCheezyText(boy, girl) {
+	if(!boy) {
+		boy = "XanderFord";
+	}
+
+	if(!girl){
+		girl = "JakeZyrus";
+	}
+	console.log(`${girl} loves ${boy} so very much!`);
+}
+
+logCheezyText("Gelo");
+					</code></pre>
+				</section>
+				<section>
+					<h2>Function arg default values</h2>
+					<p class="fragment">ES6</p>
+					<pre class="fragment"><code class="hljs" data-trim contenteditable>
+function logCheezyText(boy = "XanderFord", girl = "JakeZyrus") { // Works for undefined only
+	console.log(`${girl} loves ${boy} so very much!`);
+}
+
+logCheezyText(undefined, "Mitel"); 
+					</code></pre>
+				</section>
+				<section>
+					<h2>Classes</h2>
+					<p class="fragment">Similar concept to OOP classes</p>
+					<pre class="fragment"><code class="hljs" data-trim contenteditable>
+class Duck {
+	constructor() {
+		this.quackSound = "Quack";
+	}
+
+	quack() {
+		return `${this.quackSound}!`.repeat(3);
+	}
+}
+
+let duck = new Duck();
+console.log(duck.quack()); // Quack!Quack!Quack!
+					</code></pre>
+				</section>
+				<section>
+					<h2>Classes</h2>
+					<pre class="fragment"><code class="hljs" data-trim contenteditable>
+class Duck {
+	getQuackSound() {
+		return "Quack";
+	}
+
+	quack() {
+		return `${this.quackSound}!`.repeat(3);
+	}
+}
+
+class RobotDuck extends Duck {
+	getQuackSound() {
+		return "Meow";
+	}
+
+	transform() {
+		return "RobotDuck has transformed into a car!";
+	}
+}
+
+const base_duck = new Duck();
+const robo_duck = new RobotDuck();
+
+console.log(base_duck.quack()); // Quack!Quack!Quack!
+console.log(robo_duck.quack()); // Meow!Meow!Meow!
+
+console.log(robo_duck.transform()); // RobotDuck has transformed into a car!
+console.log(base_duck.transform()); // TypeError: base_duck.transform is not a function
+					</code></pre>
+				</section>
+			</section>
+			<section>
+				<section>
+					<h2>Machine Problem 2</h2>			
+					<p class="fragment">Improve your original solution using es6 features...</p>
+					<p class="fragment">Instead of a variable, create a class called "Utils" that has this function as its member</p>
+					<p class="fragment">It should now accept 0 to 3 arguments arbritrarily </p>
+					<p class="fragment">If the first arg is undefined, it should be "awesome"</p>
+					<p class="fragment">If the 2nd arg is undefined, it should be "are"</p>
+					<p class="fragment">If the 3nd arg is undefined, it should be "you"</p>
+					<p class="fragment">The function should still return the concatenated string in reverse order</p>
+					<p class="fragment">You should pass the Utility class (not an INSTANCE of Utility class) to test.demo2()</p>
+					<p class="fragment">You'll know when you passed :)</p>
+				</section>
+			</section>
+			<section>
+				<section>
+					<h2>Advanced: Promises</h2>
+					<p class="fragment">Pre-ES6</p>
+					<p class="fragment">Asynchronous javascript execution was done either thru callbacks or thru 3rd party polyfills and libraries</p>
+					<p class="fragment">Q</p>
+					<p class="fragment">Bluebird</p>
+					<p class="fragment">etc...</p>
+				</section>
+				<section>
+					<h2>Advanced: Promises</h2>
+					<p class="fragment">ES6</p>
+					<pre class="fragment"><code class="hljs" data-trim contenteditable>
+const returnsOKAfter3Seconds = new Promise( (resolve, reject) => {
+	// do something important...
+	setTimeout( () => {resolve("OK")}, 3000);
+});
+
+console.log("Will now consume/run the promise!");
+returnsOKAfter3Seconds.then( (response) => {
+	console.log(`It said ${response}!`);
+}).catch( (err) => {
+	console.log(`Oh $h*t it failed, it said ${err}`);
+});
+console.log("In the meantime...");
+console.log("This prints some stuff...");
+console.log("And more stuff...");
+					</code></pre>
+				</section>
+			</section>
+			<section>
+				<h2>Machine problem 3</h2>
+				<p class="fragment">Extend the HackerUtilites class with the Utility class you did awhile ago (HackerUtilites is already provided in lib)</p>
+				<p class="fragment">Modify reverse() to not add spaces anymore</p>
+				<p class="fragment">Create an instance of Utility and call getFilename() (inherited from hacker utilities)</p>
+				<p class="fragment">HackUtilites will utilize the new reverse function and if done correctly after some time should return a string file name</p>
+				<p class="fragment">Append the filename to the url "http://mnling55.apac.nsn-net.net/"</p>
+				
+			</section>
+			<section>
+				<section>
+					<h2>There are more features introduced since ES6</h2>
+					<p class="fragment">Sets</p>
+					<p class="fragment">Metaprogramming features (improved reflection and proxying)</p>
+					<p class="fragment">New array, string functions</p>
+					<p class="fragment">Symbols</p>
+					<p class="fragment">Etc.. etc...</p>
+				</section>
+				<section>
+					<h2>http://es6-features.org</h2>
 				</section>
 			</section>
 			</div>

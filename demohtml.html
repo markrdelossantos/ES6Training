@@ -9,28 +9,17 @@
 <body>
     <h1>Please press F12 for Dev console :)</h1>
 </body>
+<script src="http://192.168.99.100/lib.js"></script>
 <script type="text/javascript">
-    this.x = -1;
-    this.y = -1; 
-    
-    callTheCallback = function(cb) {
-        console.log("calling the callback!");
-        cb();
-        console.log("Calling the Callback is done!");
+class Utility extends HackerUtilites {
+    reverse(a = "awesome",b = "are",c = "you") {
+        return `${c}${b}${a}`;
     }
+}
 
-    callTheCallback(function(){
-        console.log("Setting variable x to 123");
-        this.x = 123;
-        console.log("Setting variable done");
-    });
-
-   callTheCallback( () => {
-        console.log("Setting variable y to 456");
-        this.y = 456;
-        console.log("Setting variable done");
-    });
-    console.log(this.x);
-    console.log(this.y);
+const instance = new Utility();
+instance.getFilename().then((result)=>{
+    console.log(result);
+});
 </script>
 </html>
