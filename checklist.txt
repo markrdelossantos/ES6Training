@@ -1,0 +1,5 @@
+//let, cost
+// import exports
+//arrow functions, lexical this
+// classes
+promises

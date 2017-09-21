@@ -1,0 +1,197 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>Docker CrashCourse</title>
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/blood.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section>
+					<h2>ES6 Review</h2>
+					<h3>Mark Delos Santos</h3>
+				</section>
+				<section>
+					<section>
+						<h1>Survey</h1>
+					</section>
+					<section data-background="https://i.imgur.com/aAD6hRW.gif">
+						<h3>
+							Rate your JS skill level/confidence in a scale from 1 to 5</section>
+						</h3>
+				</section>
+				<section>
+					<section>
+						<h2>ES6</h2>
+						<p class="fragment fadeup">ES2015</p>
+					</section>
+					<section>
+						<h3>Stands for Ecmascript</h3>
+					</section>
+					<section>
+						<h3>Specification Standard</h3>
+						<p class="fragment fadeup">Javascript</p>
+						<p class="fragment fadeup">V8 (Chrome, Chromium, NodeJS)</p>
+						<p class="fragment fadeup">SpiderMonkey (Firefox)</p>
+					</section>
+					<section>
+						<h3>ES6/ES2015</h3>
+						<p class="fragment fadeup">Introduced June 2015 and signficantly increased
+							the feature set of the standard.
+						</p>
+					</section>
+				</section>
+				<section>
+					<section data-background="https://media2.giphy.com/media/uh7ug2LA7Sh7a/giphy.gif">
+						<h1>Review</h1>
+					</section>
+					<section>
+						<h2>Programming Languages</h2>
+					</section>
+					<section>
+						<h2>Strong types vs Weak types</h2>
+						<pre><code class="hljs" data-trim contenteditable>
+// Java
+int number = 7;
+number = "Seven"; // Compile error
+
+// Javascript
+var number = 7;
+number = "Seven"; // No runtime error...
+						</code></pre>
+					</section>
+					<section>
+						<h2>Static typing vs Dynamic types</h2>
+						<pre><code class="hljs" data-trim contenteditable>
+// Java
+Foo foo = new Foo(); // only public method is "bar()"
+foo.amfufu(); // COMPILE ERROR!
+
+// Javascript
+var foo = new Foo(); // only method as of this line is "bar()"
+foo.amfufu(); // RUNTIME ERROR!
+						</code></pre>
+					</section>
+
+				<section>
+					<h2>Javascript is both </h2>
+					<p class="fragment">Weak typed and Dynamically typed</p>
+				</section>
+				<section>
+					<h3>Single or double quotes for Strings?</h3>
+					<p class="fragment"> You can use any of the two. Note that most linters don't like single quotes
+						for strings in JSONs...
+					</p>
+					<pre class="fragment"><code class="hljs" data-trim contenteditable>
+var s1 = 'jav';
+var s2 = "asc";
+var obj = { s3: 'ri', s4: "pt"};
+console.log(s1 + s2 + obj.s3 + obj.s4);
+					</code></pre>
+				</section>
+				<section>
+					<h2>Nulls, undefined and truthfullness</h2>
+					<p class="fragment">Undefined is a <span class="fragment highlight-red">primitive</span> that means empty, nil or nothing...</p>
+					<p class="fragment">Null is a <span class="fragment highlight-red">primitive</span> that means empty, null or nothing...</p>
+					<pre class="fragment"><code class="hljs" data-trim contenteditable>
+var a; // interpreted by the JS engine as 'undefined', falsy
+var b = null; // falsy
+var c = 0; // zero is falsy for some reason, -1 is not :/
+var d = ''; // empty string, falsy
+var e = "something"; // has value, truthy
+var f = {}; // empty object, truthy
+
+console.log(!!a); // false
+console.log(!!b); // false
+console.log(!!c); // false
+console.log(!!d); // false
+console.log(!!e); // true
+console.log(!!f); // true
+					</code></pre>
+				</section>
+				<section>
+					<h4>Functions expressions (anonymous functions) and callbacks</h4>
+					<p class="fragment">In JS, functions are <span class="fragment highlight-red">first class citizens</span></p>
+					<pre class="fragment"><code class="hljs" data-trim contenteditable>
+function DoThis() {
+	// ^ function declaration
+}
+
+function() {
+	// ^ function expression / anonymous functions
+}
+
+var cb = function() {
+	console.log("Square result is ");
+}
+
+function runCallBackAndSquareX_1(cb, x) {
+	cb();
+	return x*x;
+}
+
+var runCallBackAndSquareX_2 = function(cb, x) {
+	cb();
+	return x*x;
+} 
+
+console.log(runCallBackAndSquareX_1(cb, 7)); // Square result is 49
+console.log(runCallBackAndSquareX_2(cb, 6)); // Square result is 36
+					</code></pre>
+				</section>
+				<section>
+					<h2>Machine problem 1</h2>
+					<h3>Pre-ES5 knowledge</h3>
+					<p></p>
+				</section>
+			</section>
+			<section>
+				<section data-background="https://thumbs.gfycat.com/FrightenedNaiveAdeliepenguin-size_restricted.gif">
+					<h1>ES6 Features</h1>
+					<p class="fragment">Start opening the workfile :)</p>
+				</section>
+				<section>
+					<h2>Scoping</h2>
+					<p class="fragment">Pre-ES6</p>
+					<pre class="fragment"><code class="hljs" data-trim contenteditable>
+					
+					</code></pre>
+				</section>
+			</section>
+			</div>
+		</div>
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+			// More info about config & dependencies:
+			// - https://github.com/hakimel/reveal.js#configuration
+			// - https://github.com/hakimel/reveal.js#dependencies
+			Reveal.initialize({
+				dependencies: [
+					{ src: 'plugin/markdown/marked.js' },
+					{ src: 'plugin/markdown/markdown.js' },
+					{ src: 'plugin/notes/notes.js', async: true },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+				]
+			});
+		</script>
+	</body>
+</html>
